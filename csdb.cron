@@ -1,0 +1,3 @@
+# GitHub Update Once A Day
+@reboot pi bash /home/pi/scripts/csdbghupdate.sh &
+0 1 * * * pi bash /home/pi/scripts/csdbghupdate.sh &
