@@ -3,6 +3,7 @@
 Steps for initialization of a pi:
 
 1. Follow steps to install new operating system and login using ssh or keyboard
+ - Must set username to *pi*
 
 1. sudo raspi-config (if not setup when installing OS)
   - System Options
