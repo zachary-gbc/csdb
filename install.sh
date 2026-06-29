@@ -45,8 +45,12 @@ cp /home/pi/csdb/csdbghupdate.sh /home/pi/scripts/csdbghupdate.sh
 sudo cp -f /home/pi/csdb/csdb.cron /etc/cron.d/csdb
 sudo chown root:root /etc/cron.d/csdb
 sudo mkdir -p /var/www/html/conf
+sudo mkdir -p /var/www/html/other
+sudo chown pi:pi /var/www/html
 sudo chown pi:pi /var/www/html/conf
+sudo chown pi:pi /var/www/html/other
 cp /home/pi/csdb/csdb.conf /var/www/html/conf/csdb.conf
+cp /home/pi/csdb/dblogin.php /var/www/html/other/dblogin.php
 sudo rm /var/www/html/index.html
 echo "never" > /home/pi/csdb_lastupdatecommit
 
