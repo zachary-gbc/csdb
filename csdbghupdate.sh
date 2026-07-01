@@ -2,7 +2,7 @@
 
 sleep 60
 
-. /var/www/html/conf/csdb.conf
+. /var/www/conf/csdb.conf
 lastupdate=$(</home/pi/csdb_lastupdatecommit)
 mac=$(cat /sys/class/net/wlan0/address | sed 's/://g')
 log=$(date -I)

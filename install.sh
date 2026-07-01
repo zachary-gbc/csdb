@@ -44,12 +44,12 @@ done
 cp /home/pi/csdb/csdbghupdate.sh /home/pi/scripts/csdbghupdate.sh
 sudo cp -f /home/pi/csdb/csdb.cron /etc/cron.d/csdb
 sudo chown root:root /etc/cron.d/csdb
-sudo mkdir -p /var/www/html/conf
+sudo mkdir -p /var/www/conf
 sudo mkdir -p /var/www/html/other
 sudo chown pi:pi /var/www/html
-sudo chown pi:pi /var/www/html/conf
+sudo chown pi:pi /var/www/conf
 sudo chown pi:pi /var/www/html/other
-cp /home/pi/csdb/csdb.conf /var/www/html/conf/csdb.conf
+cp /home/pi/csdb/csdb.conf /var/www/conf/csdb.conf
 cp /home/pi/csdb/dblogin.php /var/www/html/other/dblogin.php
 sudo rm /var/www/html/index.html
 echo "never" > /home/pi/csdb_lastupdatecommit
@@ -63,18 +63,18 @@ then
   sudo mysql --user="$dbuser" --password="$dbpass" --database="$dbname" -e "INSERT INTO Variables(Var_Name, Var_Value) VALUES('Database-IP', '$lanip');"
   sudo mysql --user="$dbuser" --password="$dbpass" --database="$dbname" -e "INSERT INTO Variables(Var_Name, Var_Value) VALUES('Database-Name', '$dbname');"
 
-  sudo sed -i "s/database_ip.*/database_ip=\"$dbip\"/" /var/www/html/conf/csdb.conf
-  sudo sed -i "s/database_name.*/database_name=\"$dbname\"/" /var/www/html/conf/csdb.conf
-  sudo sed -i "s/database_username.*/database_username=\"$dbuser\"/" /var/www/html/conf/csdb.conf
-  sudo sed -i "s/database_password.*/database_password=\"$dbpass\"/" /var/www/html/conf/csdb.conf
+  sudo sed -i "s/database_ip.*/database_ip=\"$dbip\"/" /var/www/conf/csdb.conf
+  sudo sed -i "s/database_name.*/database_name=\"$dbname\"/" /var/www/conf/csdb.conf
+  sudo sed -i "s/database_username.*/database_username=\"$dbuser\"/" /var/www/conf/csdb.conf
+  sudo sed -i "s/database_password.*/database_password=\"$dbpass\"/" /var/www/conf/csdb.conf
 else
-  sudo curl -Ss "http://$dbip/csdb/conf/csdb.conf" --output /var/www/html/conf/csdb.conf
+  sudo curl -Ss "http://$dbip/csdb/conf/csdb.conf" --output /var/www/conf/csdb.conf
   sudo curl -Ss "http://$dbip/csdb/scripts/dbupdate.php?type=devicedetails&device=$mac&devname=$HOSTNAME" >> $install_log
 fi
 
 sudo apt autoremove -y
 
-. /var/www/html/conf/csdb.conf
+. /var/www/conf/csdb.conf
 
 echo ""
 echo "----------------------"
