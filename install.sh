@@ -60,8 +60,8 @@ then
   sudo mysql --user='root' -e "GRANT ALL PRIVILEGES ON *.* TO '$dbuser'@'$dblan%' IDENTIFIED BY '$dbpass'"
   sudo mysql --user='root' -e "CREATE DATABASE IF NOT EXISTS $dbname"
   sudo mysql --user="$dbuser" --password="$dbpass" --database="$dbname" < /home/pi/csdb/db.txt
-  sudo mysql --user="$dbuser" --password="$dbpass" --database="$dbname" -e "INSERT INTO Variables(Var_Name, Var_Value) VALUES('Database-IP', '$lanip');"
-  sudo mysql --user="$dbuser" --password="$dbpass" --database="$dbname" -e "INSERT INTO Variables(Var_Name, Var_Value) VALUES('Database-Name', '$dbname');"
+  sudo mysql --user="$dbuser" --password="$dbpass" --database="$dbname" -e "INSERT INTO Variables(Var_Name, Var_System, Var_Value) VALUES('Database-IP', 'CSDB', '$lanip');"
+  sudo mysql --user="$dbuser" --password="$dbpass" --database="$dbname" -e "INSERT INTO Variables(Var_Name, Var_System, Var_Value) VALUES('Database-Name', 'CSDB', '$dbname');"
 
   sudo sed -i "s/database_ip.*/database_ip=\"$dbip\"/" /var/www/conf/csdb.conf
   sudo sed -i "s/database_name.*/database_name=\"$dbname\"/" /var/www/conf/csdb.conf
