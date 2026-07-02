@@ -16,13 +16,14 @@ lastcommit=$(git log --pretty=format:"%H")
 
 if [[ $lastcommit != $lastupdate ]]
 then
-  mv /home/pi/csdb/csdbghupdate.sh /home/pi/scripts/csdbghupdate.sh
+    mv /home/pi/csdb/csdbghupdate.sh /home/pi/csdb-csdbghupdate.sh
+    ( sleep 60; mv /home/pi/csdb-ghupdate.sh /home/pi/scripts/csdb/ghupdate.sh ) & 
 
-  # Crons
-  sudo mv -f /home/pi/csdb/csdb.cron /etc/cron.d/csdb
-  sudo chown root:root /etc/cron.d/csdb
+    # Crons
+    sudo mv -f /home/pi/csdb/csdb.cron /etc/cron.d/csdb
+    sudo chown root:root /etc/cron.d/csdb
 
-  echo $lastcommit > /home/pi/csdb_lastupdatecommit
+    echo $lastcommit > /home/pi/csdb_lastupdatecommit
 fi
 
 sudo rm -r -f /home/pi/csdb
