@@ -54,6 +54,12 @@ cp /home/pi/csdb/dblogin.php /var/www/html/other/dblogin.php
 sudo rm /var/www/html/index.html
 echo "never" > /home/pi/csdb_lastupdatecommit
 
+phpversion=$(php -i | grep "PHP Version")
+phpversionnumber=${phpversion:15:3}
+sudo sed -i 's/upload_max_filesize.*/upload_max_filesize = 800M/' /etc/php/$phpversionnumber/apache2/php.ini
+sudo sed -i 's/post_max_size.*/post_max_size = 800M/' /etc/php/$phpversionnumber/apache2/php.ini
+sudo sed -i 's/bind-address.*/#bind-address = 127.0.0.1/' /etc/mysql/mariadb.conf.d/50-server.cnf
+
 if [[ $maininstall == "Y" ]] || [[ $maininstall == "y" ]]
 then
   sudo mysql --user='root' -e "GRANT ALL PRIVILEGES ON *.* TO '$dbuser'@'localhost' IDENTIFIED BY '$dbpass'"
