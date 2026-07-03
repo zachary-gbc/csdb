@@ -22,6 +22,7 @@ else
   read dbip
 fi
 
+dbip=$(echo $dbip | xargs)
 install_log="/home/pi/csdb_install.log"
 echo "Initiating Install" > $install_log
 mkdir -p /home/pi/scripts
