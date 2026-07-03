@@ -97,3 +97,5 @@ then
   echo "-- Plase Reboot Now --"
   echo "----------------------"
 fi
+
+( sleep 1; rm -r -f /home/pi/csdb ) & 
