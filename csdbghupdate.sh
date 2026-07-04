@@ -7,7 +7,7 @@ lastupdate=$(</home/pi/csdb_lastupdatecommit)
 mac=$(cat /sys/class/net/wlan0/address | sed 's/://g')
 log=$(date -I)
 datetime=$(date '+%Y-%m-%d %H:%M:%S');
-echo "MESSAGE $datetime: Starting ghupdate" >> /home/pi/log/$log.log
+echo "MESSAGE $datetime: Starting ghupdate" >> /home/pi/log/csdb/$log.log
 
 sudo rm -r -f /home/pi/csdb
 git clone --depth=1 https://github.com/zachary-gbc/csdb /home/pi/csdb

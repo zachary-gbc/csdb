@@ -23,14 +23,14 @@ else
 fi
 
 dbip=$(echo $dbip | xargs)
-install_log="/home/pi/csdb_install.log"
+mkdir -p /home/pi/scripts/csdb
+install_log="/home/pi/log/csdb/install.log"
 echo "Initiating Install" > $install_log
-mkdir -p /home/pi/scripts
 mkdir -p /home/pi/log
 
 sudo apt-get update
 sudo apt-get upgrade -y
-appstoinstall=(at apache2 php php-mysql php-curl mariadb-server git wget curl)
+appstoinstall=(apache2 php php-mysql php-curl mariadb-server git wget curl)
 
 for app in ${appstoinstall[@]}
 do
