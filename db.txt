@@ -6,7 +6,6 @@ CREATE TABLE Users(
   Usr_FirstName VARCHAR(100) NOT NULL,
   Usr_LastName VARCHAR(100) NOT NULL,
   Usr_Password VARCHAR(100) NOT NULL,
-  Usr_PushoverCode VARCHAR(100) NULL,
   PRIMARY KEY(Usr_ID)
 );
 
@@ -18,6 +17,9 @@ CREATE TABLE Variables(
   Var_Value VARCHAR(255) NULL,
   PRIMARY KEY(Var_ID)
 );
+INSERT INTO Variables(Var_System, Var_Name, Var_Value) VALUES('GLOBAL', 'Use-Pushover', 'no');
+INSERT INTO Variables(Var_System, Var_Name, Var_Value) VALUES('GLOBAL', 'Pushover-Token', '1');
+INSERT INTO Variables(Var_System, Var_Name, Var_Value) VALUES('GLOBAL', 'Pushover-User-Key', '1');
 
 DROP TABLE IF EXISTS PushoverLog;
 CREATE TABLE PushoverLog(
@@ -26,6 +28,19 @@ CREATE TABLE PushoverLog(
   PO_Title VARCHAR(100) NOT NULL,
   PO_Response VARCHAR(100) NULL,
   PO_AlertSent VARCHAR(100) NULL,
-  PO_DateTime VARCHAR(100) NULL,
+  PO_DateTime DATETIME NULL,
   PRIMARY KEY(PO_ID)
+);
+
+DROP TABLE IF EXISTS Devices;
+CREATE TABLE Devices(
+  Dev_ID INT NOT NULL AUTO_INCREMENT,
+  Dev_Name VARCHAR(150) NULL,
+  Dev_Type VARCHAR(100) NOT NULL,
+  Dev_MAC VARCHAR(50) NULL,
+  Dev_IP VARCHAR(50) NULL,
+  Dev_CSDBGHUpdate DATETIME NULL,
+  Dev_CSDBConf DATETIME NULL,
+  Dev_AlertIPChange CHAR(1) NOT NULL DEFAULT 'N',
+  PRIMARY KEY(Dev_ID)
 );

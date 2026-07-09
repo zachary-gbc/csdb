@@ -10,7 +10,10 @@ Steps for initialization of a pi:
         - Wireless LAN
         - Update password (recommended but not required)
         - Admin Password (set to No)
+    - Localisation Options
+        - Timezone
     - Reboot
+1. If main instance, set ip address to static ip in router
 1. sudo apt-get update
 1. sudo apt-get install git -y
 1. git clone --depth=1 https://github.com/zachary-gbc/csdb /home/pi/csdb
