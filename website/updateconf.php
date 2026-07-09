@@ -36,12 +36,14 @@ if($mainorremote == "main")
 }
 elseif(isset($_GET['update']) && $_GET['update'] == "true")
 {
+    $database_ip=trim($_SERVER['REMOTE_ADDR']);
     $po=$_GET['po'];
     $potoken=$_GET['potoken'];
     $pouser=$_GET['pouser'];
     $alertip=$_GET['alertip'];
+    if(trim($dbip) == trim($database_ip)) { $mainorremote="main"; } else { $mainorremote="remote"; }
 
-    $newconf="database_ip=\"$dbip\"\npushover_configured=\"$po\"\npushover_token=\"$potoken\"\npushover_user_key=\"$pouser\"\nalert_on_ip_change=\"$alertip\"\nremote=\"true\"";
+    $newconf="database_ip=\"$dbip\"\npushover_configured=\"$po\"\npushover_token=\"$potoken\"\npushover_user_key=\"$pouser\"\nalert_on_ip_change=\"$alertip\"\main_or_remote=\"$mainorremote\"";
 
     file_put_contents($conflines,$newconf);
     echo("UPDATED");
