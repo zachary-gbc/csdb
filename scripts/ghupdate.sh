@@ -16,7 +16,7 @@ lastcommit=$(git log --pretty=format:"%H")
 
 if [[ $lastcommit != $lastupdate ]]
 then
-    mv /home/pi/csdb/csdbghupdate.sh /home/pi/csdbghupdate.sh
+    mv /home/pi/csdb/scripts/ghupdate.sh /home/pi/csdbghupdate.sh
     ( sleep 60; mv /home/pi/csdbghupdate.sh /home/pi/scripts/csdb/ghupdate.sh ) & 
 
     # Crons
