@@ -62,7 +62,7 @@ phpversionnumber=${phpversion:15:3}
 systemtimezone=$(cat /etc/timezone)
 timezone=("date.timezone = $systemtimezone")
 sudo sed -i 's/upload_max_filesize.*/upload_max_filesize = 800M/' /etc/php/$phpversionnumber/apache2/php.ini
-sudo sed -i 's/;max_input_vars.*/max_input_vars = 2000/' /etc/php/$phpversionnumber/apache2/php.ini
+sudo sed -i 's/;max_input_vars.*/max_input_vars = 3000/' /etc/php/$phpversionnumber/apache2/php.ini
 sudo sed -i "s|;date.timezone.*|$timezone|" /etc/php/$phpversionnumber/apache2/php.ini
 sudo sed -i 's/post_max_size.*/post_max_size = 800M/' /etc/php/$phpversionnumber/apache2/php.ini
 sudo sed -i 's/bind-address.*/#bind-address = 127.0.0.1/' /etc/mysql/mariadb.conf.d/50-server.cnf
