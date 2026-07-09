@@ -2,7 +2,7 @@
 
 include($_SERVER['DOCUMENT_ROOT'] . '/other/dblogin.php');
 
-if($remote == "false")
+if($mainorremote == "main")
 {
     $database_ip=trim($_SERVER['REMOTE_ADDR']);
     $pushover_configured="no";
@@ -36,15 +36,10 @@ if($remote == "false")
 }
 elseif(isset($_GET['update']) && $_GET['update'] == "true")
 {
-    $dbip="1.1.1.1";
     $po=$_GET['po'];
     $potoken=$_GET['potoken'];
     $pouser=$_GET['pouser'];
     $alertip=$_GET['alertip'];
-
-    $conflines=file('/var/www/conf/csdb.conf'); $remote="false";
-    foreach($conflines as $line)
-    { if(substr($line,0,11) == "database_ip") { $dbip=trim(str_replace('"','',substr($line,12))); } }
 
     $newconf="database_ip=\"$dbip\"\npushover_configured=\"$po\"\npushover_token=\"$potoken\"\npushover_user_key=\"$pouser\"\nalert_on_ip_change=\"$alertip\"\nremote=\"true\"";
 

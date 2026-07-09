@@ -1,17 +1,17 @@
 <?php
 
-$conflines=file('/var/www/conf/csdb.conf'); $remote="false";
+$conflines=file('/var/www/conf/csdb.conf'); $mainorremote="false";
 foreach($conflines as $line)
 {
     if(substr($line,0,11) == "database_ip") { $dbip=trim(str_replace('"','',substr($line,12))); }
     if(substr($line,0,13) == "database_name") { $dbname=trim(str_replace('"','',substr($line,14))); }
     if(substr($line,0,17) == "database_username") { $dbuser=trim(str_replace('"','',substr($line,18))); }
     if(substr($line,0,17) == "database_password") { $dbpass=trim(str_replace('"','',substr($line,18))); }
-    if(substr($line,0,7) == "remote") { $remote=trim(str_replace('"','',substr($line,8))); }
+    if(substr($line,0,14) == "main_or_remote") { $mainorremote=trim(str_replace('"','',substr($line,15))); }
 }
 
 if(isset($_GET['updateconf'])) { $donothing=true; }
-elseif($remote == "true") { echo("Wrong Host"); exit; }
+elseif($mainorremote != "main") { echo("Wrong Host"); exit; }
 else
 {
     if(!$db=mysqli_connect($dbip,$dbuser,$dbpass)) { echo("DB Connection Error"); exit; }

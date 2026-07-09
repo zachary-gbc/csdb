@@ -10,7 +10,7 @@ echo "MESSAGE $datetime: Starting cleanup" >> /home/pi/log/csdb/$log.log
 # Delete old log files
 find /home/pi/log -mtime +30 -type f -delete
 
-if [ "$database_ip" == "$lanip" ]
+if [ "$main_or_remote" == "main" ]
 then
     # Delete old database backups
     find /var/www/html/dbbackup -mtime +30 -type f -delete

@@ -8,7 +8,7 @@ echo "MESSAGE $datetime: Starting dbbackup" >> /home/pi/log/csdb/$log.log
 
 mkdir -p /var/www/html/dbbackup
 
-if [ "$database_ip" == "$lanip" ]
+if [ "$main_or_remote" == "main" ]
 then
   sudo mysqldump --user="$database_username" --password="$database_password" $database_name -r /var/www/html/dbbackup/$database_name-$log.sql
   exit 1

@@ -67,8 +67,6 @@ sudo sed -i "s|;date.timezone.*|$timezone|" /etc/php/$phpversionnumber/apache2/p
 sudo sed -i 's/post_max_size.*/post_max_size = 800M/' /etc/php/$phpversionnumber/apache2/php.ini
 sudo sed -i 's/bind-address.*/#bind-address = 127.0.0.1/' /etc/mysql/mariadb.conf.d/50-server.cnf
 
-sudo sed -i "s/date.timezone.*/date.timezone = $timezone/" /etc/php/$phpversionnumber/apache2/php.ini
-
 if [[ $maininstall == "Y" ]] || [[ $maininstall == "y" ]]
 then
     sudo mysql --user='root' -e "GRANT ALL PRIVILEGES ON *.* TO '$dbuser'@'localhost' IDENTIFIED BY '$dbpass'"
@@ -79,10 +77,7 @@ then
     sudo sed -i "s/database_name.*/database_name=\"$dbname\"/" /var/www/conf/csdb.conf
     sudo sed -i "s/database_username.*/database_username=\"$dbuser\"/" /var/www/conf/csdb.conf
     sudo sed -i "s/database_password.*/database_password=\"$dbpass\"/" /var/www/conf/csdb.conf
-else
-    sudo sed -i "s/database_name.*/remote=\"true\"/" /var/www/conf/csdb.conf
-    sudo sed -i "s/database_username.*//" /var/www/conf/csdb.conf
-    sudo sed -i "s/database_password.*//" /var/www/conf/csdb.conf
+    sudo sed -i "s/main_or_remote.*/main_or_remote=\"main\"/" /var/www/conf/csdb.conf
 fi
 
 sudo sed -i "s/database_ip.*/database_ip=\"$mainip\"/" /var/www/conf/csdb.conf
