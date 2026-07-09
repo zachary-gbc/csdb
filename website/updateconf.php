@@ -1,7 +1,7 @@
 <?php
 include($_SERVER['DOCUMENT_ROOT'] . '/other/dblogin.php');
 
-if($mainorremote == "main")
+if($mainorremote == "main" && !isset($_GET['update']))
 {
     $database_ip=trim($_SERVER['REMOTE_ADDR']);
     $pushover_configured="no";
