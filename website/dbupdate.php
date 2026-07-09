@@ -1,5 +1,4 @@
 <?php
-
 include($_SERVER['DOCUMENT_ROOT'] . '/other/dblogin.php');
 
 $type=""; $device=""; $devname="rpi-xx"; $devip=""; $update=""; $dbupdate=""; $now=date("Y-m-d H:i:s");
@@ -39,5 +38,4 @@ if($device != "")
         echo("MESSAGE " . date("Y-m-d H:i:s") . ": Database Updated Successfully ($type)\n");
     }
 }
-
 ?>

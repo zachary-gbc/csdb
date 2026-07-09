@@ -1,5 +1,4 @@
 <?php
-
 $conflines=file('/var/www/conf/csdb.conf'); $mainorremote="false";
 foreach($conflines as $line)
 {
@@ -17,5 +16,4 @@ else
     if(!$db=mysqli_connect($dbip,$dbuser,$dbpass)) { echo("DB Connection Error"); exit; }
     if(!mysqli_select_db($db,$dbname)) { echo("Unable to Select Database"); exit; }
 }
-
 ?>

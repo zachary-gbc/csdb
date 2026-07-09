@@ -1,5 +1,4 @@
 <?php
-
 include($_SERVER['DOCUMENT_ROOT'] . '/other/dblogin.php');
 
 if($mainorremote == "main")
@@ -48,5 +47,4 @@ elseif(isset($_GET['update']) && $_GET['update'] == "true")
     file_put_contents($conflines,$newconf);
     echo("UPDATED");
 }
-
 ?>
