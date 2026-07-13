@@ -22,6 +22,7 @@ then
     # Crons
     sudo mv -f /home/pi/csdb/csdb.cron /etc/cron.d/csdb
     sudo chown root:root /etc/cron.d/csdb
+    sudo chmod 600 /etc/cron.d/csdb
 
     echo $lastcommit > /home/pi/csdb_lastupdatecommit
 fi
