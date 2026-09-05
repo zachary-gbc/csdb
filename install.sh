@@ -54,7 +54,6 @@ sudo chown pi:pi /var/www/conf
 sudo chown pi:pi /var/www/html/other
 cp /home/pi/csdb/csdb.conf /var/www/conf/csdb.conf
 sudo rsync -avu "/home/pi/csdb/website/" "/var/www/html/other"
-sudo rm -f /var/www/html/index.html
 echo "never" > /home/pi/csdb_lastupdatecommit
 
 phpversion=$(php -i | grep "PHP Version")
