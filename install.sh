@@ -25,6 +25,7 @@ else
 fi
 
 mainip=$(echo $mainip | xargs)
+mkdir -p /home/pi/log
 mkdir -p /home/pi/scripts/csdb
 install_log="/home/pi/log/csdb/install.log"
 echo "Initiating Install" > $install_log
