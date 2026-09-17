@@ -19,10 +19,16 @@ then
     mv /home/pi/csdb/scripts/ghupdate.sh /home/pi/csdbghupdate.sh
     ( sleep 60; mv /home/pi/csdbghupdate.sh /home/pi/scripts/csdb/ghupdate.sh ) & 
 
+    # Scripts
+    sudo mv -f /home/pi/csdb/scripts/* /home/pi/scripts/csdb/
+
     # Crons
     sudo mv -f /home/pi/csdb/csdb.cron /etc/cron.d/csdb
     sudo chown root:root /etc/cron.d/csdb
     sudo chmod 600 /etc/cron.d/csdb
+
+    # Website
+    sudo rsync -avu "/home/pi/csdb/website/" "/var/www/html/other"
 
     echo $lastcommit > /home/pi/csdb_lastupdatecommit
 fi

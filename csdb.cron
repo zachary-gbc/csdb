@@ -2,7 +2,7 @@
 */30 * * * * pi bash /home/pi/scripts/csdb/ipcheck.sh &
 
 # Update Conf Once A Day
-0 0 * * * pi php /var/www/html/other/updateconf.php &
+0 0 * * * pi bash /home/pi/scripts/csdb/updateconf.sh &
 
 # GitHub Update Once A Day
 @reboot pi bash /home/pi/scripts/csdb/ghupdate.sh &
@@ -16,4 +16,3 @@
 
 # Cleanup Once a Week
 30 6 * * 2 pi bash /home/pi/scripts/cleanup.sh &
-

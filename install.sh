@@ -81,6 +81,7 @@ then
 fi
 
 sudo sed -i "s/database_ip.*/database_ip=\"$mainip\"/" /var/www/conf/csdb.conf
+if [[ "${lanip: -1}" == " " ]]; then lanip=${lanip:0:-1}; fi
 curl http://$mainip/other/dbupdate.php?type=new\&device=$mac\&lanip=$lanip
 sudo apt autoremove -y
 

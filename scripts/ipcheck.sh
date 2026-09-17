@@ -22,12 +22,14 @@ if [ $waniplength > 5 ] && [ $laniplength > 5 ]
 then
   if [ $curwan != $wanip ] || [ $curlan != $lanip ]
   then
-    if [[ $pushover_configured == "yes" ]] && [[ $alert_on_ip_change == "yes" ]]
+    if [[ $pushover_configured == "yes" ]] && [[ $alert_on_ip_change == "Y" ]]
     then
       bash /home/pi/scripts/csdb/pushover.sh "$HOSTNAME IP Changed" "none" "WAN: $wanip | LAN: $lanip"
     fi
     echo $lanip > /home/pi/scripts/csdb/lanip
     echo $wanip > /home/pi/scripts/csdb/wanip
+    if [[ "${lanip: -1}" == " " ]]; then lanip=${lanip:0:-1}; fi
+
     curl http://$database_ip/other/dbupdate.php?type=ipchange\&device=$mac\&lanip=$lanip
   fi
 fi
