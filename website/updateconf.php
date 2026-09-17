@@ -27,7 +27,8 @@ if($mainorremote == "main")
     $now=date("Y-m-d H:i:s"); $update="UPDATE Devices SET Dev_CSDBConf='$now' WHERE (Dev_IP='$devip')";
     if(!$rs=mysqli_query($db,$update)) { echo("Unable to Run Query: $update"); exit; }
 
-    $newconf="database_ip=\"$dbip\"\npushover_configured=\"$po\"\npushover_token=\"$potoken\"\npushover_user_key=\"$pouser\"\nalert_on_ip_change=\"$alertip\"\nmain_or_remote=\"$mainorremote\"\n";
+    if(trim($dbip) == trim($devip)) { $newconf="pushover_configured=\"$po\"\npushover_token=\"$potoken\"\npushover_user_key=\"$pouser\"\n\nalert_on_ip_change=\"$alertip\"\n"; }
+    else { $newconf="database_ip=\"$dbip\"\npushover_configured=\"$po\"\npushover_token=\"$potoken\"\npushover_user_key=\"$pouser\"\n\nalert_on_ip_change=\"$alertip\"\nmain_or_remote=\"$mainorremote\"\n"; }
 
     if($devip != "") { echo($newconf); }
 }
