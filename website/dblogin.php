@@ -9,8 +9,7 @@ foreach($conflines as $line)
     if(substr($line,0,14) == "main_or_remote") { $mainorremote=trim(str_replace('"','',substr($line,15))); }
 }
 
-if(isset($_GET['updateconf'])) { $donothing=true; }
-elseif($mainorremote != "main") { echo("Wrong Host"); exit; }
+if($mainorremote != "main") { exit; }
 else
 {
     if(!$db=mysqli_connect($dbip,$dbuser,$dbpass)) { echo("DB Connection Error"); exit; }
