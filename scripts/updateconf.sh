@@ -4,10 +4,10 @@
 lanip=$(hostname -I)
 if [[ "${lanip: -1}" == " " ]]; then lanip=${lanip:0:-1}; fi
 
-curl -Ss "http://$database_ip/other/updateconf.php?updateconf=true&deviceip=$lanip" >> /var/www/conf/csdb.download
+curl -Ss "http://$database_ip/other/updateconf.php?updateconf=true&deviceip=$lanip" > /var/www/conf/csdb.download
 
 charcount=$(wc -m < "/var/www/conf/csdb.download")
-if [[ $charcount > 60 ]]
+if [[ $charcount -gt 60 ]]
 then
     if [ "$main_or_remote" == "main" ]
     then
