@@ -54,6 +54,8 @@ sudo chown pi:pi /var/www/html
 sudo chown pi:pi /var/www/conf
 sudo chown pi:pi /var/www/html/other
 cp /home/pi/csdb/csdb.conf /var/www/conf/csdb.conf
+sudo rm /var/www/html/index.html
+sudo mv /home/pi/csdb/website/index.php /var/www/html/index.php
 sudo rsync -avu "/home/pi/csdb/website/" "/var/www/html/other"
 echo "never" > /home/pi/csdb_lastupdatecommit
 
