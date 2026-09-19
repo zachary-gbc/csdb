@@ -30,6 +30,7 @@ then
     # Website
     sudo mv /home/pi/csdb/website/index.php /var/www/html/index.php
     sudo rsync -avu "/home/pi/csdb/website/" "/var/www/html/other"
+    sudo rm /var/www/html/other/index.php
 
     echo $lastcommit > /home/pi/csdb_lastupdatecommit
 fi

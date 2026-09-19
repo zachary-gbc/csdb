@@ -32,7 +32,6 @@
 
 <body style="margin:0px">
 	<div class="header">Church Pi Systems</div>
-    <br><h3 style="margin: 3px 0px 0px 5px">Variables</h3><br>
     <?php
     $systems=array("cec"=>"Calendar Entry Checker"); $installed=""; $notinstalled="";
 
@@ -42,8 +41,8 @@
         else { $notinstalled.="<h3><a href='https://github.com/zachary-gbc/$system'>$fullname</a></h3>\n"; }
     }
 
-    if($installed != "") { echo("<h2>Installed Systems:</h2>\n$installed<br><br>"); }
-    if($notinstalled != "") { echo("<h2>Systems Not Installed:</h2>\n$notinstalled"); }
+    if($installed != "") { echo("<br><h2>Installed Systems:</h2>\n$installed<br>"); }
+    if($notinstalled != "") { echo("<br><h2>Systems Not Installed:</h2>\n$notinstalled"); }
     ?>
 </body>
 </html>
