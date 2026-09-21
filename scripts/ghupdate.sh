@@ -35,4 +35,5 @@ then
     echo $lastcommit > /home/pi/csdb_lastupdatecommit
 fi
 
+curl http://$database_ip/other/dbupdate.php?type=ghupdate\&device=$mac
 sudo rm -r -f /home/pi/csdb
