@@ -9,7 +9,7 @@ Steps for initialization of a pi:
         - Update Hostname (recommended to know which device is which but not required)
         - Wireless LAN
         - Update password (recommended but not required)
-        - Admin Password (set to No)
+        - Admin password, set to No (recommended but not required)
     - Localisation Options
         - Timezone
     - Reboot
